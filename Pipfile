@@ -8,7 +8,6 @@ snowflake = "*"
 snowflake-connector-python = "*"
 snowflake-snowpark-python = "*"
 snowflake-cli = "*"
-"snowflake.core" = "*"
 
 [dev-packages]
 

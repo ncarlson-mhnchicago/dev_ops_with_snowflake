@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0bce55a18c9bff679fe97b25ff840ed2de12e87b73fb44baf87e7aab11325133"
+            "sha256": "b9cf1502ed6cfdfb9d2f89aec9f1307604f983e0f904dcdf09f3630e5143c4f7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -807,14 +807,6 @@
             "index": "pypi",
             "markers": "python_version < '3.12' and python_version >= '3.8'",
             "version": "==1.24.0"
-        },
-        "snowflake.core": {
-            "hashes": [
-                "sha256:29372c39fae5ab12ee477b16a9555d927f3fad394755252f4533f47717b99cef",
-                "sha256:984ed50c07ae9409db76deee78aa73e2095bbcec9f4d90b860c1b9fa2a0d341e"
-            ],
-            "markers": "python_version < '3.12' and python_version >= '3.8'",
-            "version": "==0.8.0"
         },
         "sortedcontainers": {
             "hashes": [
