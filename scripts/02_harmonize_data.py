@@ -123,7 +123,7 @@ pipeline = [
             and arrival_airport = arrival_iata_airport_code
         where departure_airport = (
             select $1:airport 
-            from @DEVOPS_WITH_SNOWFLAKE_DEV.INTEGRATIONS.GITHUB_REPO/branches/main/data/home.json 
+            from @DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO/branches/main/data/home.json 
                 (FILE_FORMAT => bronze.json_format))
         """,
     ),
@@ -233,35 +233,35 @@ pipeline = [
         group by city.geo_id, city.geo_name, city.total_population
         """,
     ),
-    # Placeholder: Add new view definition here
-    View(
-        name="attractions",
-        columns=[
-            ViewColumn(name="geo_id"),
-            ViewColumn(name="geo_name"),
-            ViewColumn(name="aquarium_cnt"),
-            ViewColumn(name="zoo_cnt"),
-            ViewColumn(name="korean_restaurant_cnt"),
-        ],
-        query="""
-        select
-            city.geo_id,
-            city.geo_name,
-            count(case when category_main = 'Aquarium' THEN 1 END) aquarium_cnt,
-            count(case when category_main = 'Zoo' THEN 1 END) zoo_cnt,
-            count(case when category_main = 'Korean Restaurant' THEN 1 END) korean_restaurant_cnt,
-        from us_addresses__poi.cybersyn.point_of_interest_index poi
-        join us_addresses__poi.cybersyn.point_of_interest_addresses_relationships poi_add 
-            on poi_add.poi_id = poi.poi_id
-        join us_addresses__poi.cybersyn.us_addresses address 
-            on address.address_id = poi_add.address_id
-        join major_us_cities city on city.geo_id = address.id_city
-        where true
-            and category_main in ('Aquarium', 'Zoo', 'Korean Restaurant')
-            and id_country = 'country/USA'
-        group by city.geo_id, city.geo_name
-        """,
-    ),
+    # STEP 5: INSERT CHANGES HERE: Add new view definition here
+    # View(
+    #     name="attractions",
+    #     columns=[
+    #         ViewColumn(name="geo_id"),
+    #         ViewColumn(name="geo_name"),
+    #         ViewColumn(name="aquarium_cnt"),
+    #         ViewColumn(name="zoo_cnt"),
+    #         ViewColumn(name="korean_restaurant_cnt"),
+    #     ],
+    #     query="""
+    #     select
+    #         city.geo_id,
+    #         city.geo_name,
+    #         count(case when category_main = 'Aquarium' THEN 1 END) aquarium_cnt,
+    #         count(case when category_main = 'Zoo' THEN 1 END) zoo_cnt,
+    #         count(case when category_main = 'Korean Restaurant' THEN 1 END) korean_restaurant_cnt,
+    #     from us_addresses__poi.cybersyn.point_of_interest_index poi
+    #     join us_addresses__poi.cybersyn.point_of_interest_addresses_relationships poi_add 
+    #         on poi_add.poi_id = poi.poi_id
+    #     join us_addresses__poi.cybersyn.us_addresses address 
+    #         on address.address_id = poi_add.address_id
+    #     join major_us_cities city on city.geo_id = address.id_city
+    #     where true
+    #         and category_main in ('Aquarium', 'Zoo', 'Korean Restaurant')
+    #         and id_country = 'country/USA'
+    #     group by city.geo_id, city.geo_name
+    #     """,
+    # ),
 ]
 
 

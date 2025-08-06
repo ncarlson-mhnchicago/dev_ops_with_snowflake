@@ -12,13 +12,13 @@ By the end of the session, you will have learned everything you need to get star
 
 ## Step-By-Step Guide
 
-For prerequisites, environment setup, step-by-step guide and instructions, please refer to the [QuickStart Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake_devops/index.html).
+For prerequisites, environment setup, step-by-step guide and instructions, please refer to the [QuickStart Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake_devops/index.html)
+
+Orginal repository:
 https://github.com/Snowflake-Labs/sfguide-getting-started-with-snowflake-devops
 
 
-#### Pre-liminary Step 1: Create GitHub Secrets
-
-
+#### Pre-liminary Step: Create GitHub Secrets
 On GitHub:
 1. Create a Personal Access Token:
     1. Log in to your GitHub account.
@@ -39,7 +39,7 @@ From the cloned dev_ops_with_snowflake repository, click on the "Settings" tab n
     - SNOWFLAKE_PASSWORD: <Your Snowflake Password>
     - SNOWFLAKE_ROLE: AccountAdmin
     - SNOWFLAKE_WAREHOUSE: TEST_WH
-    - SNOWFLAKE_DATABASE: DEVOPS_WITH_SNOWFLAKE_DEV
+    - SNOWFLAKE_DATABASE: DEVOPS_WITH_SNOWFLAKE_COMMON
     - SNOWFLAKE_SCHEMA: INTEGRATIONS
 
 On Snowsight:
@@ -55,3 +55,4 @@ On Snowsight:
 3. In this notebook edit cell set_ddl.  Update the value for SET GITHUB_USERNAME to your username
 
     
+
