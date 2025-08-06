@@ -55,4 +55,8 @@ On Snowsight:
 3. In this notebook edit cell set_ddl.  Update the value for SET GITHUB_USERNAME to your username
 
     
+# Fetch changes from GitHub
+snow git fetch DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO
+# Deploy the updated data pipeline
+snow git execute '@DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO/branches/dev/scripts/0[123]_*'
 
