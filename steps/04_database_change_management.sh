@@ -69,4 +69,4 @@ Commit your changes to the "dev" branch before continuing
 # Fetch changes from GitHub
 snow git fetch DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO
 # Deploy the updated data pipeline
-snow git execute @DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO/branches/dev/scripts/0[123]_*
+snow git execute '@DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO/branches/dev/scripts/0[123]_*'
