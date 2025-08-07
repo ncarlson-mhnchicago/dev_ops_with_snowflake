@@ -1,7 +1,5 @@
 # Views to transform marketplace data in pipeline
 
-import os
-
 from snowflake.core import Root, CreateMode
 from snowflake.snowpark import Session
 from snowflake.core.user_defined_function import (
