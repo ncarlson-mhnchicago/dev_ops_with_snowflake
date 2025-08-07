@@ -1,4 +1,4 @@
--- Set DDL
+-- Set DDL .
 
 -- Warehouses
 CREATE OR ALTER WAREHOUSE TEST_WH 
