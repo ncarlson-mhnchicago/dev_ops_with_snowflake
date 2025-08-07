@@ -12,13 +12,13 @@ By the end of the session, you will have learned everything you need to get star
 
 ## Step-By-Step Guide
 
-For prerequisites, environment setup, step-by-step guide and instructions, please refer to the [QuickStart Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake_devops/index.html).
+For prerequisites, environment setup, step-by-step guide and instructions, please refer to the [QuickStart Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake_devops/index.html)
+
+Orginal repository:
 https://github.com/Snowflake-Labs/sfguide-getting-started-with-snowflake-devops
 
 
-#### Pre-liminary Step 1: Create GitHub Secrets
-
-
+#### Pre-liminary Step: Configure GitHub
 On GitHub:
 1. Create a Personal Access Token:
     1. Log in to your GitHub account.
@@ -37,9 +37,10 @@ From the cloned dev_ops_with_snowflake repository, click on the "Settings" tab n
     - SNOWFLAKE_ACCOUNT: <Your Snowflake Account>
     - SNOWFLAKE_USER: <Your Snowflake Username>
     - SNOWFLAKE_PASSWORD: <Your Snowflake Password>
+    - SNOWFLAKE_PRIVATE_KEY: <Your RSA Private Key>  # https://docs.snowflake.com/en/user-guide/key-pair-auth#supported-snowflake-clients
     - SNOWFLAKE_ROLE: AccountAdmin
     - SNOWFLAKE_WAREHOUSE: TEST_WH
-    - SNOWFLAKE_DATABASE: DEVOPS_WITH_SNOWFLAKE_DEV
+    - SNOWFLAKE_DATABASE: DEVOPS_WITH_SNOWFLAKE_COMMON
     - SNOWFLAKE_SCHEMA: INTEGRATIONS
 
 On Snowsight:
@@ -52,6 +53,16 @@ On Snowsight:
           TYPE = password
           USERNAME = <GITHUB USER NAME>
           PASSWORD = <GITHUB TOKEN>;
-3. In this notebook edit cell set_ddl.  Update the value for SET GITHUB_USERNAME to your username
+        ALTER USER <Your Snowflake Username> SET RSA_PUBLIC_KEY='<Your RSA Public Key>'; -- Note: Exclude the public key delimiters in the SQL statement.
 
-    
+In this Repository:
+1. 01_setup_snowflake.sql:  Update the value for SET GITHUB_USERNAME to your username
+
+#### Database Change Management
+1. Fetch changes from GitHub
+    - snow git fetch DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO
+2. Deploy the updated data pipeline
+    - snow git execute '@DEVOPS_WITH_SNOWFLAKE_COMMON.INTEGRATIONS.GITHUB_REPO/branches/dev/scripts/0[123]_*'
+
+#### Deployment Automation
+On GitHub:
