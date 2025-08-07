@@ -1,0 +1,9 @@
+[connections.default]
+account = "VNYUEIJ-PV17486"
+user = "ncarlson"
+password = "C.aP8!*Pbg68*@NNRMXGCKg6WDPB"
+authenticator = "snowflake"
+warehouse = "TEST_WH"
+role = "ACCOUNTADMIN"
+database = "DEVOPS_WITH_SNOWFLAKE_COMMON"
+schema = "INTEGRATIONS"
